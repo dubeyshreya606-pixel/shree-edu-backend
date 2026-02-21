@@ -24,6 +24,14 @@ const userRoutes = require('./routes/users');
 const noteRoutes = require('./routes/notes');
 const doubtRoutes = require('./routes/doubts');
 
+// Root Route
+app.get("/", (req, res) => {
+    res.status(200).json({
+        message: "Shree Edu Backend is running 🚀",
+        status: "success"
+    });
+});
+
 // Use Routes
 app.use('/api', authRoutes);
 app.use('/api', userRoutes);
