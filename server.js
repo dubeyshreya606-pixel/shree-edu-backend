@@ -2,17 +2,18 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/shree_edu';
 
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
 
 // MongoDB Connection
-// Note: Ensure MongoDB is running locally. Use 'localhost' or '127.0.0.1'
-mongoose.connect('mongodb://127.0.0.1:27017/shree_edu').then(() => {
+mongoose.connect(MONGODB_URI).then(() => {
     console.log('Connected to MongoDB');
 }).catch(err => {
     console.error('MongoDB connection error:', err);
